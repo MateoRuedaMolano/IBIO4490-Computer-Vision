@@ -292,9 +292,7 @@ Para el punto 7, primero se comenzó creando los directorios correspondientes de
 
 En la carpeta newFolder se crearon estos sub directorios para guardar las imágenes modificadas en resolución.
 
-Posteriormente, se cambió el size de cada imagen de cada una de las carpetas (*train, val y test*) a 256x256 y se pasó a las carpetas nuevas creadas. Se usaron 3 comandos para
-
- cada una de las carpetas, los cuales fueron:
+Posteriormente, se cambió el size de cada imagen de cada una de las carpetas (*train, val y test*) a 256x256 y se pasó a las carpetas nuevas creadas. Se usaron 3 comandos para cada una de las carpetas, los cuales fueron:
 
 ##### Train:
 
@@ -302,17 +300,18 @@ Posteriormente, se cambió el size de cada imagen de cada una de las carpetas (*
 
 ##### Validation:
 
-![](Imag_lab1/14.PNG)
+![](Imag_lab1/15.PNG)
 
 ##### Test:
 
-![](Imag_lab1/15.PNG)
+![](Imag_lab1/16.PNG)
+
 
 Como vemos todas las imágenes quedaron en la nueva carpeta newFolder.
 
 Ahora para verificar la resolución, sacamos para train la resolución con la línea de código del numeral 5.
 
-![](Imag_lab1/16.PNG)
+![](Imag_lab1/17.PNG)
 
 Nos paramos en la nueva carpeta (newFolder) y hacemos el mismo procedimiento del numeral 5. Nos damos cuenta que todas las imágenes tienen 256x256 por lo que está correcto el procedimiento. 
 
