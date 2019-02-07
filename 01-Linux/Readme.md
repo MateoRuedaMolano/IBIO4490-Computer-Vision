@@ -51,8 +51,9 @@ Some special directories are:
    -  ``/`` (slash): The root of the file system
    -  ``~`` (tilde) :  Home directory
       
+
 Using these commands, take some time to explore the ubuntu filesystem, get to know the location of your user directory, and its default contents. 
-   
+
 To get more information about a command call it with the ``--help`` flag, or call ``man <command>`` for a more detailed description of it, for example ``man find`` or just search in google.
 
 
@@ -106,10 +107,10 @@ See [here](ssh.md) for different types of SSH connection with respect to your OS
    ```bash
    drwxr-x--- 2 vision vision 4096 ene 25 18:45 images
    ```
-   
+
    -  ``chmod`` change access permissions of a file (you must have write access)
    -  ``chown`` change the owner of a file
-   
+
 ## Sample Exercise: Image database
 
 1. Create a folder with your Uniandes username. (If you don't have Linux in your personal computer)
@@ -134,7 +135,7 @@ See [here](ssh.md) for different types of SSH connection with respect to your OS
     
 3.  Create a script to copy all *color* images to a different folder
     Lines that start with # are comments
-       
+    
       ```bash
       #!/bin/bash
       
@@ -170,40 +171,152 @@ See [here](ssh.md) for different types of SSH connection with respect to your OS
       -  save it for example as ``find_color_images.sh``
       -  make executable ``chmod u+x`` (This means add Execute permission for the user)
       -  run ``./find_duplicates.sh`` (The dot is necessary to run a program in the current directory)
-      
+    
 
 ## Your turn
 
 1. What is the ``grep``command?
 
+   El comando grep se utiliza para buscar un patrón de texto (especificado en la línea de comando) en un archivo, múltiples archivos o en una entrada. Se busca línea por línea el patrón y grep entrega la línea de texto completa donde se encuentra este patrón.
+
+   ##### Sintaxis.
+
+   ``grep`` [*opciones*] patrón [*archivo*]
+
+   Esta información se basó de  [Computer Hope](https://www.computerhope.com/unix/ugrep.htm)
+
+   
+
 2. What is the meaning of ``#!/bin/python`` at the start of scripts?
 
-3. Download using ``wget`` the [*bsds500*](https://www2.eecs.berkeley.edu/Research/Projects/CS/vision/grouping/resources.html#bsds500) image segmentation database, and decompress it using ``tar`` (keep it in you hard drive, we will come back over this data in a few weeks).
- 
-4. What is the disk size of the uncompressed dataset, How many images are in the directory 'BSR/BSDS500/data/images'?
- 
-5. What are all the different resolutions? What is their format? Tip: use ``awk``, ``sort``, ``uniq`` 
+   `#!/bin/python` corresponde a un shebang. Se conoce como shebang al conjunto de caracteres `#!` cuando están al principio de un archivo tipo texto. Este indica que el archivo corresponde a un script y qué intérprete ha de usarse para ejecutar el mismo (en este caso el intérprete es Python localizado en `/bin`).  Los sistemas operativos Linux (y otros sistemas Unix) soportan de forma nativa esta característica.
 
-6. How many of them are in *landscape* orientation (opposed to *portrait*)? Tip: use ``awk`` and ``cut``
- 
+   
+
+3. Download using ``wget`` the [*bsds500*](https://www2.eecs.berkeley.edu/Research/Projects/CS/vision/grouping/resources.html#bsds500) image segmentation database, and decompress it using ``tar`` (keep it in you hard drive, we will come back over this data in a few weeks).
+
+   El comando utilizado para descargar la base de datos se muestra a continuación:
+
+   ![1549530521080](C:\Users\mates\AppData\Roaming\Typora\typora-user-images\1549530521080.png)
+
+   Al descomprimir se utilizó:
+
+   ![1549530653259](C:\Users\mates\AppData\Roaming\Typora\typora-user-images\1549530653259.png)
+
+
+
+4. What is the disk size of the uncompressed dataset, How many images are in the directory 'BSR/BSDS500/data/images'?
+
+   ##### Tamaño *en* el disco de la base de datos descomprimida.
+
+   Se utilizó el comando `du` en la carpeta descomprimida y se obtuvo que esta ocupa un espacio de 73Megabytes o 74128bits. El `-h` se utilizó para saber el espacio que ocupaba en derivados del Byte (KiloByte, MegaByte, etc.)
+
+   Comandos y resultados:
+
+   ![1549530837459](C:\Users\mates\AppData\Roaming\Typora\typora-user-images\1549530837459.png)
+
+   Este comando se utiliza para determinar el tamaño en bits.  
+
+   ![1549530923603](C:\Users\mates\AppData\Roaming\Typora\typora-user-images\1549530923603.png)
+
+   Tamaño 74128 bits.
+
+   ![1549531050151](C:\Users\mates\AppData\Roaming\Typora\typora-user-images\1549531050151.png)
+
+   El comando anterior se utiliza para determinar el tamaño en derivados del Byte. 
+
+   ![1549531154018](C:\Users\mates\AppData\Roaming\Typora\typora-user-images\1549531154018.png)
+
+   Tamaño 73MBytes.
+
+   La sintaxis y el uso de `du` en este problema, se obtuvo de [Ayuda Linux](https://ayudalinux.com/comandos-de-tamano-y-espacio-de-disco-df-y-du/)
+
+   
+
+   ##### Número de imágenes en el directorio
+
+   Como todas las imágenes son *jpg* se determinó el número de imágenes mediante la línea de código:
+
+   ![1549531460022](C:\Users\mates\AppData\Roaming\Typora\typora-user-images\1549531460022.png)
+
+   Con un resultado como podemos evidenciar en la parte inferior de 500 imágenes. 
+
+   Cualquier archivo con el nombre *jpg*, mediante una variable contador, se almacena en ella el resultado (se van contando así las imágenes). Vale la pena aclarar que esta línea de código se corrió en la carpeta images dentro del dataset
+
+   
+
+   
+
+   5. What are all the different resolutions? What is their format? Tip: use ``awk``, ``sort``, ``uniq``
+
+      ##### Formato
+
+      ![1549532504321](C:\Users\mates\AppData\Roaming\Typora\typora-user-images\1549532504321.png)
+
+   Mediante el comando anterior, se encontró la última línea después de un punto, que corresponde al formato de los archivos.  Después de obtener los formatos de cada imagen, se ordenó con `sort -u` para obtener los tipos de formatos de las imágenes.  Las imágenes así, son *jpg*, aunque existe un archivo en el folder de formato *db*. 
+
+   
+
+   El separador de punto en awk y el print de la última línea se basó en los ejemplos de los siguientes links.
+   [Computer Hope](https://www.computerhope.com/unix/usort.htm) y [awk](https://stackoverflow.com/questions/4304917/how-to-print-last-two-columns-using awk.)
+
+   ##### Formato tan solo de las imágenes
+
+   ![1549533328669](C:\Users\mates\AppData\Roaming\Typora\typora-user-images\1549533328669.png)
+
+   Este comando es similar al anterior, solo que se obtiene en vez de las resoluciones, el formato de las imágenes.
+
+   La información de identify en imagemagick se obtuvo de [identify](https://superuser.com/questions/275502/how-to-get-information-about-an-image-picture-from-the-linux-command-line.)
+
+   
+
+   ##### Resolución
+
+   ![1549532817150](C:\Users\mates\AppData\Roaming\Typora\typora-user-images\1549532817150.png)
+
+   Este comando se utilizó para hallar las resoluciones de las imágenes. Mediante `$(find . -name ".jpg")` se encontraban los nombres de las imágenes y haciendo `identify` se obtienen elementos como el formato, la resolución, los bits, si es RGB, etc. A partir de estos datos se buscó mediante `awk`  la columna 3 correspondiente a la resolución. Con `sort -u` se unificaron las resoluciones iguales obteniendo tan solo las resoluciones 481x321  y 321x481.
+
+   
+
+   6. How many of them are in *landscape* orientation (opposed to *portrait*)? Tip: use ``awk`` and ``cut``
+
+      ![1549533912056](C:\Users\mates\AppData\Roaming\Typora\typora-user-images\1549533912056.png)
+
+   El comando se basó en el del numeral anterior en el que obteníamos la resolución de cada imagen, sin embargo, se añadió una línea de `grep -c` "resolución", la cual me buscaba en cada una de las resoluciones de las imágenes alguna de las dos encontradas en el numeral anterior. Mediante un contador, se obtiene finalmente el resultado de todas las imágenes con las resoluciones tipo *landscape* (en este caso 481x321) y *portrait* (321x481).
+
 7. Crop all images to make them square (256x256) and save them in a different folder. Tip: do not forget about  [imagemagick](http://www.imagemagick.org/script/index.php).
 
+Para el punto 7, primero se comenzó creando los directorios correspondientes de la nueva carpeta
 
-# Report
+![1549534135436](C:\Users\mates\AppData\Roaming\Typora\typora-user-images\1549534135436.png)
 
-For every question write a detailed description of all the commands/scripts you used to complete them. DO NOT use a graphical interface to complete any of the tasks. Use screenshots to support your findings if you want to. 
+En la carpeta newFolder se crearon estos sub directorios para guardar las imágenes modificadas en resolución.
 
-Feel free to search for help on the internet, but ALWAYS report any external source you used.
+Posteriormente, se cambió el size de cada imagen de cada una de las carpetas (*train, val y test*) a 256x256 y se pasó a las carpetas nuevas creadas. Se usaron 3 comandos para
 
-Notice some of the questions actually require you to connect to the course server, the login instructions and credentials will be provided on the first session. 
+ cada una de las carpetas, los cuales fueron:
 
-## Deadline
+##### Train:
 
-We will be delivering every lab through the [github](https://github.com) tool (Silly link isn't it?). According to our schedule we will complete that tutorial on the second week, therefore the deadline for this lab will be specially long **February 7 11:59 pm, (it is the same as the second lab)** 
+![1549534711981](C:\Users\mates\AppData\Roaming\Typora\typora-user-images\1549534711981.png)
 
-### More information on
+##### Validation:
 
-http://www.ee.surrey.ac.uk/Teaching/Unix/ 
+![1549534826554](C:\Users\mates\AppData\Roaming\Typora\typora-user-images\1549534826554.png)
+
+##### Test:
+
+![1549534916478](C:\Users\mates\AppData\Roaming\Typora\typora-user-images\1549534916478.png)
+
+Como vemos todas las imágenes quedaron en la nueva carpeta newFolder.
+
+Ahora para verificar la resolución, sacamos para train la resolución con la línea de código del numeral 5.
+
+![1549535064671](C:\Users\mates\AppData\Roaming\Typora\typora-user-images\1549535064671.png)
+
+Nos paramos en la nueva carpeta (newFolder) y hacemos el mismo procedimiento del numeral 5. Nos damos cuenta que todas las imágenes tienen 256x256 por lo que está correcto el procedimiento. 
+
+El for, se basó en la sintaxis presentada en la guía del laboratorio, mientras que el resize se encontró de [Imagemagick](https://imagemagick.org/Usage/resize/ ) 
 
 
 
