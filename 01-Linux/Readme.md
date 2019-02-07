@@ -258,7 +258,7 @@ See [here](ssh.md) for different types of SSH connection with respect to your OS
    
 
    El separador de punto en awk y el print de la última línea se basó en los ejemplos de los siguientes links.
-   [Computer Hope](https://www.computerhope.com/unix/usort.htm) y [awk](https://stackoverflow.com/questions/4304917/how-to-print-last-two-columns-using awk.)
+   [Computer Hope](https://www.computerhope.com/unix/usort.htm) y [awk](https://stackoverflow.com/questions/4304917/how-to-print-last-two-columns-using-awk.)
 
    ##### Formato tan solo de las imágenes
 
