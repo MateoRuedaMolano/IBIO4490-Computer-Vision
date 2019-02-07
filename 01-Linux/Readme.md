@@ -279,8 +279,8 @@ See [here](ssh.md) for different types of SSH connection with respect to your OS
    
 
    6. How many of them are in *landscape* orientation (opposed to *portrait*)? Tip: use ``awk`` and ``cut``
-
-     ![](Imag_lab1/11.PNG)
+   
+![](Imag_lab1/11.PNG)
 
    El comando se basó en el del numeral anterior en el que obteníamos la resolución de cada imagen, sin embargo, se añadió una línea de `grep -c` "resolución", la cual me buscaba en cada una de las resoluciones de las imágenes alguna de las dos encontradas en el numeral anterior. Mediante un contador, se obtiene finalmente el resultado de todas las imágenes con las resoluciones tipo *landscape* (en este caso 481x321) y *portrait* (321x481).
 
