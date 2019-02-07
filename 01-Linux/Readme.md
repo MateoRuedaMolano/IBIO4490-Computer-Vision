@@ -197,11 +197,11 @@ See [here](ssh.md) for different types of SSH connection with respect to your OS
 
    El comando utilizado para descargar la base de datos se muestra a continuación:
 
-   ![1549530521080](C:\Users\mates\AppData\Roaming\Typora\typora-user-images\1549530521080.png)
+   ![](Imag_lab1/1.PNG)
 
    Al descomprimir se utilizó:
 
-   ![1549530653259](C:\Users\mates\AppData\Roaming\Typora\typora-user-images\1549530653259.png)
+   ![](Imag_lab1/2.PNG)
 
 
 
@@ -213,19 +213,19 @@ See [here](ssh.md) for different types of SSH connection with respect to your OS
 
    Comandos y resultados:
 
-   ![1549530837459](C:\Users\mates\AppData\Roaming\Typora\typora-user-images\1549530837459.png)
+  ![](Imag_lab1/3.PNG)
 
    Este comando se utiliza para determinar el tamaño en bits.  
 
-   ![1549530923603](C:\Users\mates\AppData\Roaming\Typora\typora-user-images\1549530923603.png)
+   ![](Imag_lab1/4.PNG)
 
    Tamaño 74128 bits.
 
-   ![1549531050151](C:\Users\mates\AppData\Roaming\Typora\typora-user-images\1549531050151.png)
+   ![](Imag_lab1/5.PNG)
 
    El comando anterior se utiliza para determinar el tamaño en derivados del Byte. 
 
-   ![1549531154018](C:\Users\mates\AppData\Roaming\Typora\typora-user-images\1549531154018.png)
+   ![](Imag_lab1/6.PNG)
 
    Tamaño 73MBytes.
 
@@ -237,7 +237,7 @@ See [here](ssh.md) for different types of SSH connection with respect to your OS
 
    Como todas las imágenes son *jpg* se determinó el número de imágenes mediante la línea de código:
 
-   ![1549531460022](C:\Users\mates\AppData\Roaming\Typora\typora-user-images\1549531460022.png)
+   ![](Imag_lab1/7.PNG)
 
    Con un resultado como podemos evidenciar en la parte inferior de 500 imágenes. 
 
@@ -251,7 +251,7 @@ See [here](ssh.md) for different types of SSH connection with respect to your OS
 
       ##### Formato
 
-      ![1549532504321](C:\Users\mates\AppData\Roaming\Typora\typora-user-images\1549532504321.png)
+      ![](Imag_lab1/8.PNG)
 
    Mediante el comando anterior, se encontró la última línea después de un punto, que corresponde al formato de los archivos.  Después de obtener los formatos de cada imagen, se ordenó con `sort -u` para obtener los tipos de formatos de las imágenes.  Las imágenes así, son *jpg*, aunque existe un archivo en el folder de formato *db*. 
 
@@ -262,7 +262,7 @@ See [here](ssh.md) for different types of SSH connection with respect to your OS
 
    ##### Formato tan solo de las imágenes
 
-   ![1549533328669](C:\Users\mates\AppData\Roaming\Typora\typora-user-images\1549533328669.png)
+   ![](Imag_lab1/9.PNG)
 
    Este comando es similar al anterior, solo que se obtiene en vez de las resoluciones, el formato de las imágenes.
 
@@ -272,15 +272,15 @@ See [here](ssh.md) for different types of SSH connection with respect to your OS
 
    ##### Resolución
 
-   ![1549532817150](C:\Users\mates\AppData\Roaming\Typora\typora-user-images\1549532817150.png)
-
+   ![](Imag_lab1/10.PNG)
+   
    Este comando se utilizó para hallar las resoluciones de las imágenes. Mediante `$(find . -name ".jpg")` se encontraban los nombres de las imágenes y haciendo `identify` se obtienen elementos como el formato, la resolución, los bits, si es RGB, etc. A partir de estos datos se buscó mediante `awk`  la columna 3 correspondiente a la resolución. Con `sort -u` se unificaron las resoluciones iguales obteniendo tan solo las resoluciones 481x321  y 321x481.
 
    
 
    6. How many of them are in *landscape* orientation (opposed to *portrait*)? Tip: use ``awk`` and ``cut``
 
-      ![1549533912056](C:\Users\mates\AppData\Roaming\Typora\typora-user-images\1549533912056.png)
+     ![](Imag_lab1/11.PNG)
 
    El comando se basó en el del numeral anterior en el que obteníamos la resolución de cada imagen, sin embargo, se añadió una línea de `grep -c` "resolución", la cual me buscaba en cada una de las resoluciones de las imágenes alguna de las dos encontradas en el numeral anterior. Mediante un contador, se obtiene finalmente el resultado de todas las imágenes con las resoluciones tipo *landscape* (en este caso 481x321) y *portrait* (321x481).
 
@@ -288,7 +288,7 @@ See [here](ssh.md) for different types of SSH connection with respect to your OS
 
 Para el punto 7, primero se comenzó creando los directorios correspondientes de la nueva carpeta
 
-![1549534135436](C:\Users\mates\AppData\Roaming\Typora\typora-user-images\1549534135436.png)
+![](Imag_lab1/12.PNG)
 
 En la carpeta newFolder se crearon estos sub directorios para guardar las imágenes modificadas en resolución.
 
@@ -298,21 +298,21 @@ Posteriormente, se cambió el size de cada imagen de cada una de las carpetas (*
 
 ##### Train:
 
-![1549534711981](C:\Users\mates\AppData\Roaming\Typora\typora-user-images\1549534711981.png)
+![](Imag_lab1/13.PNG)
 
 ##### Validation:
 
-![1549534826554](C:\Users\mates\AppData\Roaming\Typora\typora-user-images\1549534826554.png)
+![](Imag_lab1/14.PNG)
 
 ##### Test:
 
-![1549534916478](C:\Users\mates\AppData\Roaming\Typora\typora-user-images\1549534916478.png)
+![](Imag_lab1/15.PNG)
 
 Como vemos todas las imágenes quedaron en la nueva carpeta newFolder.
 
 Ahora para verificar la resolución, sacamos para train la resolución con la línea de código del numeral 5.
 
-![1549535064671](C:\Users\mates\AppData\Roaming\Typora\typora-user-images\1549535064671.png)
+![](Imag_lab1/16.PNG)
 
 Nos paramos en la nueva carpeta (newFolder) y hacemos el mismo procedimiento del numeral 5. Nos damos cuenta que todas las imágenes tienen 256x256 por lo que está correcto el procedimiento. 
 
