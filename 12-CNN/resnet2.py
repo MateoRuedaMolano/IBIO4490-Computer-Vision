@@ -402,7 +402,7 @@ def train(data_loader, model, epoch):
         n_target = (target.data).cpu().numpy()
         n_target.clip(0)
         n_prediction = (prediction.data).cpu().numpy()
-        f_measure = f1_score(n_target, n_prediction, average='weighted', sample_weight=None)
+        f_measure = f1_score(n_target, n_prediction, average='macro', sample_weight=None)
         
     
     print("Loss: %0.3f | Acc: %0.2f"%(np.array(loss_cum).mean(), f_measure))
@@ -424,8 +424,12 @@ def val(data_loader, model, epoch):
         #_, arg_max_out = torch.max(output.data.cpu(), 1)
         prediction = torch.where(output.data.cpu() > 0, torch.Tensor([1]), torch.Tensor([0]))      
         Acc += (torch.eq(target.data.cpu().long(),prediction.long())).sum()
+        n_target = (target.data).cpu().numpy()
+        n_target.clip(0)
+        n_prediction = (prediction.data).cpu().numpy()
+        f_measure = f1_score(n_target, n_prediction, average='macro', sample_weight=None)
     
-   print("Loss Val: %0.3f | Acc Val: %0.2f"%(np.array(loss_cum).mean(), float(Acc*100)/len(data_loader.dataset)))
+   print("Loss: %0.3f | Acc: %0.2f"%(np.array(loss_cum).mean(), f_measure))
 
 def test(data_loader, model, epoch):
     model.eval() 
@@ -439,15 +443,16 @@ def test(data_loader, model, epoch):
         cont = 1;
         for i in range(prediction.shape[0]):
             number_image = '{0:06}'.format(182637+cont)
+            cont = cont +1
             filename=number_image+'.jpg'
             file.write(filename+",")
             for j in range(prediction.shape[1]):
                 n_pred = prediction.numpy()
-                n_pred.astype(np.uint8)
+                n_pred.astype(int)
                 res = n_pred[i][j]
-                file.write(str(res)+",")
-            file.write(":\n") 
-            cont = cont +1
+                if j < prediction.shape[1]:
+                    file.write(str(res)+",")   
+            file.write("\n") 
     file.close()         
     
 if __name__=='__main__':
